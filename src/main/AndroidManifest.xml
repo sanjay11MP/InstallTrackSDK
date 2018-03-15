@@ -1,4 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="mobpair.com.installtrack">
+    package="mobpair.com.installtrack"
+    android:versionCode="1"
+    android:versionName="1.0"
+    tools:ignore="GradleOverrides">
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        tools:ignore="GradleOverrides" />
+    <application />
 </manifest>
