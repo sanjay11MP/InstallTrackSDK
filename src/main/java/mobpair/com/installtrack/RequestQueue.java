@@ -122,6 +122,7 @@ public class RequestQueue {
      * @param cache A Cache to use for persisting responses to disk
      * @param network A Network interface for performing HTTP requests
      */
+
     public RequestQueue(Cache cache, Network network) {
         this(cache, network, DEFAULT_NETWORK_THREAD_POOL_SIZE);
     }
@@ -130,7 +131,8 @@ public class RequestQueue {
      * Starts the dispatchers in this queue.
      */
     public void start() {
-        stop();  // Make sure any currently running dispatchers are stopped.
+        stop();
+        // Make sure any currently running dispatchers are stopped.
         // Create the cache dispatcher and start it.
         mCacheDispatcher = new CacheDispatcher(mCacheQueue, mNetworkQueue, mCache, mDelivery);
         mCacheDispatcher.start();

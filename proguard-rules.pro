@@ -20,3 +20,9 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 -dontwarn com.android.installreferrer
+-keepclassmembers,allowshrinking,allowobfuscation class mobpair.com.installtrack.NetworkDispatcher {
+    void processRequest();
+}
+-keepclassmembers,allowshrinking,allowobfuscation class mobpair.com.installtrack.CacheDispatcher {
+    void processRequest();
+}

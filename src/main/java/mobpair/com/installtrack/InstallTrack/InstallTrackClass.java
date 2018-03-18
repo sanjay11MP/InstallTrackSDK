@@ -1,4 +1,4 @@
-package mobpair.com.installtrack;
+package mobpair.com.installtrack.InstallTrack;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

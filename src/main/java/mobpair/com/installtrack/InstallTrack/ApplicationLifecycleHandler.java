@@ -1,10 +1,12 @@
-package mobpair.com.installtrack;
+package mobpair.com.installtrack.InstallTrack;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Application;
+import android.content.BroadcastReceiver;
 import android.content.ComponentCallbacks2;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
