@@ -7,6 +7,12 @@ import android.os.Build;
 import android.provider.Settings;
 import android.util.Log;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import mobpair.com.installtrack.AuthFailureError;
 import mobpair.com.installtrack.DefaultRetryPolicy;
 import mobpair.com.installtrack.Request;
@@ -17,19 +23,13 @@ import mobpair.com.installtrack.VolleyError;
 import mobpair.com.installtrack.toolbox.StringRequest;
 import mobpair.com.installtrack.toolbox.Volley;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import static android.content.ContentValues.TAG;
 
 /**
  * Created by ${Mobpair} on 6/3/18.
  */
 
-public class Util {
+class Util {
     private Context mContext;
     private static String CURRENT_DATE = "currentdate";
     private static String REFFERER = "refferer";
@@ -61,7 +61,7 @@ public class Util {
         return mPrefs.getString(REFFERER, "null");
     }
 
-    public void SendDeviceId(final CallBack volleyCallback) {
+    void SendDeviceId(final CallBack volleyCallback) {
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         requestQueue.start();
 
