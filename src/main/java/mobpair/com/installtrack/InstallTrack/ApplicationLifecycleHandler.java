@@ -4,9 +4,7 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Application;
-import android.content.BroadcastReceiver;
 import android.content.ComponentCallbacks2;
-import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,13 +22,29 @@ import java.util.Date;
 public class ApplicationLifecycleHandler implements Application.ActivityLifecycleCallbacks, ComponentCallbacks2 {
 
     private static final String TAG = ApplicationLifecycleHandler.class.getSimpleName();
-    private static boolean isInBackground = false;
-    private InstallTrackClass util;
+    private static boolean isInBackground = true;
+    private String getDatePref;
+    private String formattedDate;
+    private Util util;
 
     @Override
     public void onActivityCreated(Activity activity, Bundle bundle) {
-        util = new InstallTrackClass(activity);
-        Log.d(TAG, "onActivityCreated");
+        util = new Util(activity);
+        Date date = Calendar.getInstance().getTime();
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        formattedDate = df.format(date);
+
+        Log.d(TAG, "Date" + util.getCurrentDate());
+        getDatePref = util.getCurrentDate();
+
+        Log.d(TAG, "onActivityCreated:" + getDatePref);
+        if (getDatePref.equalsIgnoreCase(formattedDate)) {
+            Log.d(TAG, "onActivityCreated : Equals");
+        } else {
+            util.setCurrentDate(formattedDate);
+            Log.d(TAG, "onActivityCreated : NotEquals");
+        }
     }
 
     @Override
@@ -41,14 +55,7 @@ public class ApplicationLifecycleHandler implements Application.ActivityLifecycl
     @Override
     public void onActivityResumed(Activity activity) {
         Log.d(TAG, "onActivityResumed");
-
-        Date date = Calendar.getInstance().getTime();
-        @SuppressLint("SimpleDateFormat")
-        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
-        String formattedDate = df.format(date);
-
-        Log.d(TAG, "Date" + util.getCurrentDate());
-        String getDatePref = util.getCurrentDate();
+        Log.d(TAG, "onActivityResumed :" + getDatePref);
 
         if (isInBackground) {
             if (getDatePref.equalsIgnoreCase(formattedDate)) {

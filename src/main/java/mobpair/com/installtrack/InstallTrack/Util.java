@@ -29,13 +29,14 @@ import static android.content.ContentValues.TAG;
  * Created by ${Mobpair} on 6/3/18.
  */
 
-public class InstallTrackClass {
+public class Util {
     private Context mContext;
     private static String CURRENT_DATE = "currentdate";
+    private static String REFFERER = "refferer";
     private final SharedPreferences mPrefs;
     private static final String PREFERENCES = "settings";
 
-    public InstallTrackClass(final Context context) {
+    Util(final Context context) {
         mPrefs = context.getSharedPreferences(PREFERENCES, 0);
         mContext = context;
     }
@@ -50,6 +51,14 @@ public class InstallTrackClass {
 
     String getCurrentDate() {
         return mPrefs.getString(CURRENT_DATE, "null");
+    }
+
+    void setRefferer(String refferer) {
+        putString(REFFERER, refferer);
+    }
+
+    String getRefferer() {
+        return mPrefs.getString(REFFERER, "null");
     }
 
     public void SendDeviceId(final CallBack volleyCallback) {
