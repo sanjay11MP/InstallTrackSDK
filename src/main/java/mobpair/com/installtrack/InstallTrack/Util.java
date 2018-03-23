@@ -29,6 +29,9 @@ import static android.content.ContentValues.TAG;
  * Created by ${Mobpair} on 6/3/18.
  */
 
+/**
+ * {@link Util class is used to store sharedpreference }
+ */
 class Util {
     private Context mContext;
     private static String CURRENT_DATE = "currentdate";
@@ -36,23 +39,48 @@ class Util {
     private final SharedPreferences mPrefs;
     private static final String PREFERENCES = "settings";
 
+    /**
+     * @param context context of used class
+     */
     Util(final Context context) {
         mPrefs = context.getSharedPreferences(PREFERENCES, 0);
         mContext = context;
     }
 
+    /**
+     * putString method is used for store string value preference
+     *
+     * @param name
+     * @param value
+     */
     private void putString(String name, String value) {
         mPrefs.edit().putString(name, value).apply();
     }
 
+    /**
+     * set Current Date in preference
+     *
+     * @param date date you want to store
+     */
     void setCurrentDate(String date) {
         putString(CURRENT_DATE, date);
     }
+
+    /**
+     * Get Date Stored in preference
+     *
+     * @return return current date stored in preference
+     */
 
     String getCurrentDate() {
         return mPrefs.getString(CURRENT_DATE, "null");
     }
 
+    /**
+     * for store refferer in preference
+     *
+     * @param refferer value of refferer
+     */
     void setRefferer(String refferer) {
         putString(REFFERER, refferer);
     }

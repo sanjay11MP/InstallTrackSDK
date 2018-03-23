@@ -21,7 +21,7 @@ import java.util.Date;
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 public class ApplicationLifecycleHandler implements Application.ActivityLifecycleCallbacks, ComponentCallbacks2 {
 
-    private static final String TAG = ApplicationLifecycleHandler.class.getSimpleName();
+    private static final String TAG = ApplicationLifecycleHandler.class.getName();
     private static boolean isInBackground = true;
     private String getDatePref;
     private String formattedDate;
@@ -30,21 +30,14 @@ public class ApplicationLifecycleHandler implements Application.ActivityLifecycl
     @Override
     public void onActivityCreated(Activity activity, Bundle bundle) {
         util = new Util(activity);
-        Date date = Calendar.getInstance().getTime();
-        @SuppressLint("SimpleDateFormat")
-        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
-        formattedDate = df.format(date);
 
-        Log.d(TAG, "Date" + util.getCurrentDate());
-        getDatePref = util.getCurrentDate();
-
-        Log.d(TAG, "onActivityCreated:" + getDatePref);
+        /*Log.d(TAG, "onActivityCreated:" + getDatePref);
         if (getDatePref.equalsIgnoreCase(formattedDate)) {
             Log.d(TAG, "onActivityCreated : Equals");
         } else {
             util.setCurrentDate(formattedDate);
             Log.d(TAG, "onActivityCreated : NotEquals");
-        }
+        }*/
     }
 
     @Override
@@ -56,6 +49,13 @@ public class ApplicationLifecycleHandler implements Application.ActivityLifecycl
     public void onActivityResumed(Activity activity) {
         Log.d(TAG, "onActivityResumed");
         Log.d(TAG, "onActivityResumed :" + getDatePref);
+        Date date = Calendar.getInstance().getTime();
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        formattedDate = df.format(date);
+
+        Log.d(TAG, "Date" + util.getCurrentDate());
+        getDatePref = util.getCurrentDate();
 
         if (isInBackground) {
             if (getDatePref.equalsIgnoreCase(formattedDate)) {
@@ -68,15 +68,6 @@ public class ApplicationLifecycleHandler implements Application.ActivityLifecycl
             isInBackground = false;
         } else {
             Log.d(TAG, "onActivityResumed : Null");
-        }
-    }
-
-    @Override
-    public void onTrimMemory(int i) {
-        Log.d(TAG, "onTrimMemory");
-        if (i == ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN) {
-            Log.d(TAG, "app went to background");
-            isInBackground = true;
         }
     }
 
@@ -98,6 +89,15 @@ public class ApplicationLifecycleHandler implements Application.ActivityLifecycl
     @Override
     public void onActivityDestroyed(Activity activity) {
 
+    }
+
+    @Override
+    public void onTrimMemory(int i) {
+        Log.d(TAG, "onTrimMemory");
+        if (i == ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN) {
+            Log.d(TAG, "app went to background");
+            isInBackground = true;
+        }
     }
 
     @Override

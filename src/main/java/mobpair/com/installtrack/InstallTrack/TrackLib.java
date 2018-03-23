@@ -15,6 +15,7 @@ public class TrackLib {
     private String REFFERER_VALUE = "referrer";
     private static TrackLib instance = new TrackLib();
     private Util util;
+    private String refferer_chk;
 
     public static TrackLib getInstance() {
         return instance;
@@ -45,15 +46,15 @@ public class TrackLib {
     }
 
     public void init(Application application) {
-       /* if (util.getRefferer() != null) {
-            String refferer_chk = util.getRefferer();
-        }*/
-/*
+        util = new Util(application);
+        if (util.getRefferer() != null) {
+            refferer_chk = util.getRefferer();
+        }
         if (refferer_chk != null) {
 
         } else {
 
-        }*/
+        }
 
         ApplicationLifecycleHandler handler = new ApplicationLifecycleHandler();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
@@ -63,6 +64,6 @@ public class TrackLib {
     }
 
     public void updateFCMToken(String fcmToken) {
-
+        Log.d(TAG, "Token : " + fcmToken);
     }
 }

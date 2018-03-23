@@ -18,8 +18,6 @@ package mobpair.com.installtrack;
 
 import android.os.Process;
 
-import mobpair.com.installtrack.Cache;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
