@@ -5,6 +5,23 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.provider.Settings;
+import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import mobpair.com.mylibrary.AuthFailureError;
+import mobpair.com.mylibrary.DefaultRetryPolicy;
+import mobpair.com.mylibrary.Request;
+import mobpair.com.mylibrary.RequestQueue;
+import mobpair.com.mylibrary.Response;
+import mobpair.com.mylibrary.RetryPolicy;
+import mobpair.com.mylibrary.VolleyError;
+import mobpair.com.mylibrary.toolbox.StringRequest;
+import mobpair.com.mylibrary.toolbox.Volley;
 
 /**
  * Created by ${Mobpair} on 6/3/18.
@@ -19,6 +36,7 @@ class Util {
     private static String REFFERER = "refferer";
     private final SharedPreferences mPrefs;
     private static final String PREFERENCES = "settings";
+    private String TAG = Util.class.getName();
 
     /**
      * @param context context of used class
@@ -70,7 +88,7 @@ class Util {
         return mPrefs.getString(REFFERER, "null");
     }
 
-    /*void SendDeviceId(final CallBack volleyCallback) {
+    void SendDeviceId(final CallBack volleyCallback) {
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         requestQueue.start();
 
@@ -114,7 +132,7 @@ class Util {
         posStringRequest.setShouldCache(false);
         requestQueue.add(posStringRequest);
     }
-*/
+
     @SuppressLint({"ObsoleteSdkInt", "HardwareIds"})
     private static String DeviceId(Context context) {
         @SuppressLint("HardwareIds")
