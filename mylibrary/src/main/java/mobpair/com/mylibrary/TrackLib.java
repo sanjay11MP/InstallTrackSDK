@@ -1,4 +1,4 @@
-package mobpair.com.mylibrary.InstallTrack;
+package mobpair.com.mylibrary;
 
 import android.app.Application;
 import android.content.Context;

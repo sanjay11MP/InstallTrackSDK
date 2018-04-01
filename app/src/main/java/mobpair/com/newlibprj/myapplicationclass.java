@@ -2,7 +2,7 @@ package mobpair.com.newlibprj;
 
 import android.app.Application;
 
-import mobpair.com.mylibrary.InstallTrack.TrackLib;
+import mobpair.com.mylibrary.TrackLib;
 
 /**
  * Created by ${Mobpair} on 29/3/18.
