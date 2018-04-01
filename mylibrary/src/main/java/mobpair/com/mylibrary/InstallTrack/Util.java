@@ -7,21 +7,21 @@ import android.os.Build;
 import android.provider.Settings;
 import android.util.Log;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import mobpair.com.mylibrary.AuthFailureError;
-import mobpair.com.mylibrary.DefaultRetryPolicy;
-import mobpair.com.mylibrary.Request;
-import mobpair.com.mylibrary.RequestQueue;
-import mobpair.com.mylibrary.Response;
-import mobpair.com.mylibrary.RetryPolicy;
-import mobpair.com.mylibrary.VolleyError;
-import mobpair.com.mylibrary.toolbox.StringRequest;
-import mobpair.com.mylibrary.toolbox.Volley;
 
 /**
  * Created by ${Mobpair} on 6/3/18.

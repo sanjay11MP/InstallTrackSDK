@@ -66,4 +66,8 @@ public class TrackLib {
     public void updateFCMToken(String fcmToken) {
         Log.d(TAG, "Token : " + fcmToken);
     }
+
+    public void addFCMLegacyKey(String fcmlegacykey) {
+        Log.d(TAG, "KEY : " + fcmlegacykey);
+    }
 }
