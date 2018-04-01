@@ -32,7 +32,7 @@ public class ApplicationLifecycleHandler implements Application.ActivityLifecycl
         util = new Util(activity);
 
         if (getDatePref != null) {
-            Log.d(TAG, "onActivityCreated:" + getDatePref);
+            Log.d(TAG, "onActivityCreateda:" + getDatePref);
             if (getDatePref.equalsIgnoreCase(formattedDate)) {
                 Log.d(TAG, "onActivityCreated : Equals");
             } else {
