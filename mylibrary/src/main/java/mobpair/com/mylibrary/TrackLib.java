@@ -12,7 +12,7 @@ import android.util.Log;
 
 public class TrackLib {
     private String TAG = TrackLib.class.getName();
-    private String REFFERER_VALUE = "referrer";
+    private Context context;
     private static TrackLib instance = new TrackLib();
     private Util util;
     private String refferer_chk;
@@ -22,6 +22,7 @@ public class TrackLib {
     }
 
     void onReceive(Context context, Intent intent) {
+        String REFFERER_VALUE = "referrer";
         String referrer = intent.getStringExtra(REFFERER_VALUE);
 
         if (referrer != null) {
@@ -51,9 +52,7 @@ public class TrackLib {
             refferer_chk = util.getRefferer();
         }
         if (refferer_chk != null) {
-
         } else {
-
         }
 
         ApplicationLifecycleHandler handler = new ApplicationLifecycleHandler();

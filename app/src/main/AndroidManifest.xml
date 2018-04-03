@@ -4,6 +4,9 @@
     package="mobpair.com.newlibprj">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
     <application
         android:name=".myapplicationclass"
         android:allowBackup="true"
@@ -22,11 +25,22 @@
         <receiver
             android:name="mobpair.com.mylibrary.InstallReferrerReceiver"
             android:enabled="true"
-            android:exported="true">
+            android:exported="true"
+            tools:ignore="ExportedReceiver">
             <intent-filter>
                 <action android:name="com.android.vending.INSTALL_REFERRER" />
             </intent-filter>
         </receiver>
+
+        <!--<receiver
+            android:name="mobpair.com.mylibrary.InternetConnectivityReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action
+                    android:name="android.net.conn.CONNECTIVITY_CHANGE"
+                    tools:ignore="BatteryLife" />
+            </intent-filter>
+        </receiver>-->
     </application>
 
 </manifest>

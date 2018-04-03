@@ -21,6 +21,7 @@ import java.util.Date;
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 public class ApplicationLifecycleHandler implements Application.ActivityLifecycleCallbacks, ComponentCallbacks2 {
 
+    private static ApplicationLifecycleHandler mInstance;
     private static final String TAG = ApplicationLifecycleHandler.class.getName();
     private static boolean isInBackground = true;
     private String getDatePref;
@@ -31,8 +32,9 @@ public class ApplicationLifecycleHandler implements Application.ActivityLifecycl
     public void onActivityCreated(Activity activity, Bundle bundle) {
         util = new Util(activity);
 
+        mInstance = this;
         if (getDatePref != null) {
-            Log.d(TAG, "onActivityCreateda:" + getDatePref);
+            Log.d(TAG, "onActivityCreated:" + getDatePref);
             if (getDatePref.equalsIgnoreCase(formattedDate)) {
                 Log.d(TAG, "onActivityCreated : Equals");
             } else {
@@ -72,6 +74,10 @@ public class ApplicationLifecycleHandler implements Application.ActivityLifecycl
             Log.d(TAG, "onActivityResumed : Null");
         }
     }
+
+    /*public static synchronized Context getInstance() {
+        return mInstance;
+    }*/
 
     @Override
     public void onActivityPaused(Activity activity) {
